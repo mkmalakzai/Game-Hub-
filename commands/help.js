@@ -1,9 +1,10 @@
-/*
+/*CMD
   command: help
   help:
   need_reply: false
   folder: CORE
-*/
+  aliases:
+CMD*/
 
 Bot.sendInlineKeyboard(
   [[{ title: "⬅️ Main Menu", command: "main_menu" }]],
