@@ -1,9 +1,10 @@
-/*
+/*CMD
   command: force_join
   help:
   need_reply: false
   folder: FORCE_JOIN
-*/
+  aliases:
+CMD*/
 
 var fjEnabled = Bot.getProperty("fj_enabled", "yes");
 
