@@ -16,7 +16,15 @@ var easy = [
   {q:"Which ocean is the largest?",a:"pacific",o:["Atlantic","Pacific","Indian","Arctic"]},
   {q:"How many sides does a triangle have?",a:"3",o:["3","4","5","6"]},
   {q:"What color do blue and yellow make?",a:"green",o:["Green","Orange","Purple","Brown"]},
-  {q:"Which gas do humans need to breathe?",a:"oxygen",o:["Oxygen","Hydrogen","Nitrogen","Helium"]}
+  {q:"Which gas do humans need to breathe?",a:"oxygen",o:["Oxygen","Hydrogen","Nitrogen","Helium"]},
+  {q:"How many hours are in two days?",a:"48",o:["24","36","48","60"]},
+  {q:"Which shape has four equal sides?",a:"square",o:["Triangle","Rectangle","Square","Circle"]},
+  {q:"Which month has 28 days in a common year?",a:"february",o:["January","February","March","April"]},
+  {q:"What is 100 divided by 4?",a:"25",o:["20","25","30","40"]},
+  {q:"Which direction is opposite to north?",a:"south",o:["East","West","South","Up"]},
+  {q:"How many minutes are in one hour?",a:"60",o:["30","45","60","90"]},
+  {q:"Which animal lays eggs?",a:"chicken",o:["Cow","Chicken","Cat","Dog"]},
+  {q:"What is the freezing point of water in Celsius?",a:"0",o:["0","10","32","100"]}
 ];
 
 var medium = [
@@ -27,7 +35,15 @@ var medium = [
   {q:"Which planet has the most prominent ring system?",a:"saturn",o:["Mars","Jupiter","Saturn","Neptune"]},
   {q:"What is 15% of 200?",a:"30",o:["20","25","30","35"]},
   {q:"Which continent is Egypt primarily located in?",a:"africa",o:["Asia","Africa","Europe","South America"]},
-  {q:"What is the chemical formula for water?",a:"h2o",o:["CO2","H2O","O2","NaCl"]}
+  {q:"What is the chemical formula for water?",a:"h2o",o:["CO2","H2O","O2","NaCl"]},
+  {q:"Which country is home to the city of Barcelona?",a:"spain",o:["Italy","Spain","Portugal","France"]},
+  {q:"What is 12 squared?",a:"144",o:["124","132","144","156"]},
+  {q:"Which metal is liquid at room temperature?",a:"mercury",o:["Iron","Mercury","Copper","Aluminum"]},
+  {q:"Which organ pumps blood through the body?",a:"heart",o:["Liver","Heart","Lung","Kidney"]},
+  {q:"Which country has the maple leaf on its flag?",a:"canada",o:["Canada","Australia","Norway","Sweden"]},
+  {q:"How many players are on the field for one soccer team?",a:"11",o:["9","10","11","12"]},
+  {q:"What is the largest mammal?",a:"blue whale",o:["Elephant","Blue Whale","Giraffe","Hippopotamus"]},
+  {q:"Which instrument measures temperature?",a:"thermometer",o:["Barometer","Thermometer","Altimeter","Compass"]}
 ];
 
 var hard = [
@@ -38,7 +54,15 @@ var hard = [
   {q:"Which blood type is the universal red-cell donor?",a:"o negative",o:["AB Positive","O Negative","A Negative","B Positive"]},
   {q:"What is the square root of 1444?",a:"38",o:["36","37","38","39"]},
   {q:"Which language family does Persian belong to?",a:"indo-european",o:["Semitic","Turkic","Indo-European","Sino-Tibetan"]},
-  {q:"Which organelle is known as the powerhouse of the cell?",a:"mitochondria",o:["Nucleus","Ribosome","Mitochondria","Golgi apparatus"]}
+  {q:"Which organelle is known as the powerhouse of the cell?",a:"mitochondria",o:["Nucleus","Ribosome","Mitochondria","Golgi apparatus"]},
+  {q:"What is the value of pi rounded to two decimal places?",a:"3.14",o:["3.12","3.14","3.16","3.18"]},
+  {q:"Which scientist proposed the theory of general relativity?",a:"albert einstein",o:["Isaac Newton","Albert Einstein","Niels Bohr","Max Planck"]},
+  {q:"What is the atomic number of carbon?",a:"6",o:["4","6","8","12"]},
+  {q:"Which treaty ended World War I?",a:"treaty of versailles",o:["Treaty of Paris","Treaty of Versailles","Treaty of Rome","Treaty of Vienna"]},
+  {q:"What is the capital of Kazakhstan?",a:"astana",o:["Almaty","Astana","Tashkent","Bishkek"]},
+  {q:"Which part of the brain is mainly responsible for balance?",a:"cerebellum",o:["Cerebrum","Cerebellum","Medulla","Hypothalamus"]},
+  {q:"What is 17 squared?",a:"289",o:["279","289","299","309"]},
+  {q:"Which philosopher taught Alexander the Great?",a:"aristotle",o:["Socrates","Plato","Aristotle","Pythagoras"]}
 ];
 
 var bank = easy;
