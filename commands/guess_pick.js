@@ -16,10 +16,22 @@ if (!answer) {
 
 User.setProperty("t5_guess_answer", 0, "integer");
 var win = pick == answer;
-Bot.runCommand("game_reward " + JSON.stringify({win:win,coins:win?20:2,xp:win?12:2}));
+
+Bot.runCommand("game_reward " + JSON.stringify({
+  result: win ? "win" : "loss",
+  coins: win ? 8 : 0,
+  xp: win ? 4 : 1
+}));
 
 Bot.sendInlineKeyboard(
-  [[{title:"🔁 Play Again",command:"guess_game"},{title:"⬅️ Games",command:"games"}]],
-  "🔢 *GUESS THE NUMBER*\n━━━━━━━━━━━━━━\n\nYour guess: *" + pick + "*\nCorrect number: *" + answer + "*\n\n" +
-  (win ? "🎯 Perfect! +20 Coins, +12 XP" : "❌ Not this time. +2 Coins, +2 XP")
+  [
+    [{title:"🔢 New Number",command:"guess_game"}],
+    [{title:"⬅️ Games",command:"games"}]
+  ],
+  "🔢 *NUMBER HUNT*\n━━━━━━━━━━━━━━\n\n" +
+  "Your guess: *" + pick + "*\n" +
+  "Hidden number: *" + answer + "*\n\n" +
+  (win
+    ? "🎯 *Perfect hit*\n+8 Coins • +4 XP"
+    : "❌ *Missed*\nNo Coins • +1 XP")
 );
