@@ -22,6 +22,7 @@ if (Bot.getProperty("t5_setup_done") !== "yes") {
 }
 
 var uid = String(user.telegramid);
+Bot.setProperty("t5_name_" + uid, user.first_name || user.username || uid, "string");
 var users = Bot.getProperty("t5_users", []);
 
 if (users.indexOf(uid) === -1) {
