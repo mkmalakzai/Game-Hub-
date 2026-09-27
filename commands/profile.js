@@ -1,9 +1,10 @@
-/*
+/*CMD
   command: profile
   help:
   need_reply: false
   folder: PROFILE
-*/
+  aliases:
+CMD*/
 
 var coins = Libs.ResourcesLib.userRes("coins").value();
 var xp = Libs.ResourcesLib.userRes("xp").value();
