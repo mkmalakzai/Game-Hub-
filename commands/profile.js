@@ -6,14 +6,12 @@
   aliases:
 CMD*/
 
-var baseCoins = Math.floor(Libs.ResourcesLib.userRes("coins").value());
-var baseXp = Math.floor(Libs.ResourcesLib.userRes("xp").value());
-var mpCoins = Number(Bot.getProperty("t5_ext_coins_" + user.telegramid) || 0);
-var mpXp = Number(Bot.getProperty("t5_ext_xp_" + user.telegramid) || 0);
-var coins = baseCoins + mpCoins;
-var xp = baseXp + mpXp;
-var wins = Math.floor(Libs.ResourcesLib.userRes("wins").value());
-var losses = Math.floor(Libs.ResourcesLib.userRes("losses").value());
+var uid = String(user.telegramid);
+var coins = Number(Bot.getProperty("t5_balance_" + uid) || 0);
+var xp = Number(Bot.getProperty("t5_xp_" + uid) || 0);
+var wins = Number(Bot.getProperty("t5_wins_" + uid) || 0);
+var losses = Number(Bot.getProperty("t5_losses_" + uid) || 0);
+var played = Number(Bot.getProperty("t5_games_" + uid) || (wins + losses));
 
 var level = 1;
 var floorXp = 0;
@@ -32,19 +30,13 @@ if (pct > 100) pct = 100;
 
 var filled = Math.floor(pct / 10);
 var bar = "";
-for (var i=0; i<10; i++) {
-  bar += i < filled ? "▰" : "▱";
-}
+for (var i=0; i<10; i++) bar += i < filled ? "▰" : "▱";
 
-var played = Number(User.getProperty("t5_games_played") || (wins + losses));
-var winRate = (wins + losses) > 0 ? ((wins / (wins + losses)) * 100).toFixed(1) : "0.0";
-var streak = Number(User.getProperty("t5_win_streak") || 0);
-var best = Number(User.getProperty("t5_best_streak") || 0);
+var winRate = played > 0 ? ((wins / played) * 100).toFixed(1) : "0.0";
 
 Bot.sendInlineKeyboard(
-  [[{ title: "⬅️ Main Menu", command: "main_menu" }]],
-  "👤 *PLAYER PROFILE*\n" +
-  "━━━━━━━━━━━━━━\n\n" +
+  [[{title:"⬅️ Main Menu",command:"main_menu"}]],
+  "👤 *PLAYER PROFILE*\n━━━━━━━━━━━━━━\n\n" +
   "🎖 Level *" + level + "*\n" +
   bar + " *" + pct + "%*\n" +
   "⭐ " + xp + " / " + nextXp + " XP\n\n" +
@@ -52,7 +44,5 @@ Bot.sendInlineKeyboard(
   "🎮 Games Played: *" + played + "*\n" +
   "🏆 Wins: *" + wins + "*\n" +
   "💥 Losses: *" + losses + "*\n" +
-  "📊 Win Rate: *" + winRate + "%*\n" +
-  "🔥 Current Streak: *" + streak + "*\n" +
-  "👑 Best Streak: *" + best + "*"
+  "📊 Win Rate: *" + winRate + "%*"
 );
