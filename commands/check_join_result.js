@@ -6,7 +6,7 @@
   aliases:
 CMD*/
 
-var res = options;
+var res = options && options.result ? options.result : null;
 
 if (!res || !res.status) {
   User.setProperty("fj_check_index", 0, "integer");
