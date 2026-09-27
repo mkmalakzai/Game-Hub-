@@ -1,9 +1,10 @@
-/*
+/*CMD
   command: /start
   help:
   need_reply: false
   folder: CORE
-*/
+  aliases:
+CMD*/
 
 var banned = Bot.getProperty("user_banned_" + user.telegramid) == "yes";
 
