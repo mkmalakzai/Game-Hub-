@@ -25,8 +25,8 @@ if (mode == "fast") {
   xp = 1.15;
 }
 
-Bot.setProperty("t5_coin_multiplier", coin, "float");
-Bot.setProperty("t5_xp_multiplier", xp, "float");
+Bot.setProperty("t5_coin_multiplier", String(coin), "string");
+Bot.setProperty("t5_xp_multiplier", String(xp), "string");
 
 Bot.sendMessage("✅ Economy mode updated to *" + mode.toUpperCase() + "*.");
 Bot.runCommand("admin_economy");
