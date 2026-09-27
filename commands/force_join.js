@@ -34,9 +34,9 @@ for (var i = 0; i < channels.length; i++) {
   ]);
 }
 
-keyboard.push([{ title: "✅ Check Joined", command: "check_join" }]);
+keyboard.push([{ title: "✅ Verify Membership", command: "check_join" }]);
 
 Bot.sendInlineKeyboard(
   keyboard,
-  "🔒 *JOIN REQUIRED*\n━━━━━━━━━━━━━━\n\nTo use GameHub Pro, please join all required channels below.\n\nAfter joining, tap *✅ Check Joined*."
+  "🔒 *ACCESS REQUIRED*\n━━━━━━━━━━━━━━\n\nTo unlock *GameHub Pro*, join all required channels below.\n\nAfter joining, tap *✅ Verify Membership* and continue to your games, rewards, and profile."
 );
