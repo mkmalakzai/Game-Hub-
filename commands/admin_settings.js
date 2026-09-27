@@ -19,8 +19,11 @@ Bot.sendInlineKeyboard(
       {title:"🎮 Game Control",command:"admin_games"}
     ],
     [
-      {title:"📢 Force Join",command:"admin_fj"},
+      {title:"🌐 Multiplayer",command:"admin_multiplayer"},
       {title:"🧠 Trivia",command:"admin_trivia"}
+    ],
+    [
+      {title:"📢 Force Join",command:"admin_fj"}
     ],
     [{title:"🧹 Reset Leaderboard",command:"admin_reset_board"}],
     [{title:"⬅️ Admin Panel",command:"admin_panel"}]
