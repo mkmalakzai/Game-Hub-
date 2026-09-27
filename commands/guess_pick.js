@@ -19,8 +19,8 @@ var win = pick == answer;
 
 Bot.runCommand("game_reward " + JSON.stringify({
   result: win ? "win" : "loss",
-  coins: win ? 8 : 0,
-  xp: win ? 4 : 1
+  coins: win ? 8 : -3,
+  xp: win ? 4 : -1
 }));
 
 Bot.sendInlineKeyboard(
@@ -33,5 +33,5 @@ Bot.sendInlineKeyboard(
   "Hidden number: *" + answer + "*\n\n" +
   (win
     ? "🎯 *Perfect hit*\n+8 Coins • +4 XP"
-    : "❌ *Missed*\nNo Coins • +1 XP")
+    : "❌ *Missed*\n-3 Coins • -1 XP")
 );
