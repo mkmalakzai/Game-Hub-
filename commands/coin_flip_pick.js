@@ -25,8 +25,8 @@ var win = pick == result;
 
 Bot.runCommand("game_reward " + JSON.stringify({
   result: win ? "win" : "loss",
-  coins: win ? 4 : 0,
-  xp: win ? 2 : 1
+  coins: win ? 4 : -2,
+  xp: win ? 2 : -1
 }));
 
 Bot.sendInlineKeyboard(
@@ -37,5 +37,5 @@ Bot.sendInlineKeyboard(
   "🪙 *COIN FLIP*\n━━━━━━━━━━━━━━\n\n" +
   "Your call: *" + pick.toUpperCase() + "*\n" +
   "Result: *" + result.toUpperCase() + "*\n\n" +
-  (win ? "✅ *Correct*\n+4 Coins • +2 XP" : "❌ *Missed*\nNo Coins • +1 XP")
+  (win ? "✅ *Correct*\n+4 Coins • +2 XP" : "❌ *Missed*\n-2 Coins • -1 XP")
 );
