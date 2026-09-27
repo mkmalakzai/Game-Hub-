@@ -26,7 +26,7 @@ var desc = {
 Bot.sendInlineKeyboard(
   [
     [{title:"⚔️ Challenge Player",command:"mp_create"},{title:"📥 Pending Challenge",command:"mp_inbox"}],
-    [{title:"🔑 Enter Match ID",command:"mp_enter"},{title:"🎲 Quick Match",command:"mp_quick"}],
+    [{title:"⚡ Current Match",command:"mp_current"},{title:"🎲 Quick Match",command:"mp_quick"}],
     [{title:"👥 Group Battle",command:"group_game"},{title:"📜 Match History",command:"mp_history"}],
     [{title:"⬅️ Games",command:"games"}]
   ],
