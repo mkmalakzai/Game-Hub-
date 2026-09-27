@@ -6,24 +6,39 @@
   aliases:
 CMD*/
 
-var top = Bot.getProperty("t5_leaderboard", []);
+var users = Bot.getProperty("t5_users", []);
+var rows = [];
+
+for (var i=0; i<users.length; i++) {
+  var uid = String(users[i]);
+  var name = String(Bot.getProperty("t5_name_" + uid) || ("Player " + uid));
+  var wins = Number(Bot.getProperty("t5_wins_" + uid) || 0);
+  var xp = Number(Bot.getProperty("t5_xp_" + uid) || 0);
+
+  if (wins > 0 || xp > 0) {
+    rows.push({id:uid,name:name,wins:wins,xp:xp});
+  }
+}
+
+rows.sort(function(a,b){
+  if (b.wins == a.wins) return b.xp - a.xp;
+  return b.wins - a.wins;
+});
+
 var text = "🏆 *GLOBAL LEADERBOARD*\n━━━━━━━━━━━━━━\n\n";
 
-if (!top || top.length == 0) {
-  text += "No ranked players yet. Win games to enter the board.";
+if (!rows.length) {
+  text += "No ranked players yet.";
 } else {
-  for (var i = 0; i < top.length && i < 10; i++) {
-    var row = top[i];
-    var rank = (i + 1) + ".";
-    if (i == 0) rank = "🥇";
-    if (i == 1) rank = "🥈";
-    if (i == 2) rank = "🥉";
+  for (var r=0; r<rows.length && r<10; r++) {
+    var rank = (r+1) + ".";
+    if (r==0) rank = "🥇";
+    if (r==1) rank = "🥈";
+    if (r==2) rank = "🥉";
 
-    text += rank + " *" + row.name + "*\n";
-    text += "   🏆 " + Number(row.wins || 0) + " wins • ⭐ " + Number(row.xp || 0) + " XP\n";
+    text += rank + " *" + rows[r].name + "*\n";
+    text += "   🏆 " + rows[r].wins + " wins • ⭐ " + rows[r].xp + " XP\n";
   }
-
-  text += "\n_Ties are ranked by XP._";
 }
 
 Bot.sendInlineKeyboard(
