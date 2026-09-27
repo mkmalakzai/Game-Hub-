@@ -33,8 +33,8 @@ if (draw) {
 } else {
   Bot.runCommand("game_reward " + JSON.stringify({
     result: win ? "win" : "loss",
-    coins: win ? 5 : 0,
-    xp: win ? 3 : 1
+    coins: win ? 5 : -2,
+    xp: win ? 3 : -1
   }));
 }
 
@@ -50,5 +50,5 @@ Bot.sendInlineKeyboard(
     ? "🤝 *Draw*\n+1 Coin • +1 XP"
     : win
       ? "🏆 *Victory*\n+5 Coins • +3 XP"
-      : "💥 *Defeat*\nNo Coins • +1 XP")
+      : "💥 *Defeat*\n-2 Coins • -1 XP")
 );
