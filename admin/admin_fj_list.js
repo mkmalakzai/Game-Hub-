@@ -6,7 +6,7 @@
   aliases:
 CMD*/
 
-var ownerId = Bot.getProperty("owner_id");
+var ownerId = Bot.getProperty("t5_owner");
 
 if (!ownerId || String(user.telegramid) != String(ownerId)) {
   Bot.sendMessage("⛔ Access denied.");
