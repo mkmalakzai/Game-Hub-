@@ -6,6 +6,14 @@
   aliases:
 CMD*/
 
+if (Bot.getProperty("t5_games_enabled", "yes") != "yes") {
+  Bot.sendInlineKeyboard(
+    [[{title:"⬅️ Main Menu",command:"main_menu"}]],
+    "🚧 *GAMES TEMPORARILY DISABLED*\n\nPlease try again later."
+  );
+  return;
+}
+
 Bot.sendInlineKeyboard(
   [
     [
