@@ -25,6 +25,7 @@ Bot.sendInlineKeyboard(
     [
       {title:"📢 Force Join",command:"admin_fj"}
     ],
+    [{title:"🤖 Bot Username",command:"admin_bot_username"}],
     [{title:"🧹 Reset Leaderboard",command:"admin_reset_board"}],
     [{title:"⬅️ Admin Panel",command:"admin_panel"}]
   ],
