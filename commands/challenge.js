@@ -7,6 +7,9 @@
 CMD*/
 
 Bot.sendInlineKeyboard(
-  [[{title:"🎲 Quick Duel",command:"challenge_play"}],[{title:"⬅️ Games",command:"games"}]],
-  "⚔️ *1v1 CHALLENGE*\n━━━━━━━━━━━━━━\n\nThis starter duel puts you against a random opponent score.\nHighest roll wins."
+  [
+    [{title:"⚔️ Enter Arena",command:"challenge_play"}],
+    [{title:"⬅️ Games",command:"games"}]
+  ],
+  "⚔️ *ARENA DUEL*\n━━━━━━━━━━━━━━\n\nA tactical multi-round duel against the Arena AI.\n\n❤️ You start with 3 HP\n🤖 Opponent starts with 3 HP\n🎯 Choose the right move each round\n\n🗡 Attack beats Power\n🛡 Guard beats Attack\n⚡ Power beats Guard\n\nFirst to reduce the opponent to 0 HP wins."
 );
