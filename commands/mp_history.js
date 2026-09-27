@@ -14,8 +14,8 @@ var extXp = Number(Bot.getProperty("t5_ext_xp_" + uid) || 0);
 var text =
   "📜 *MULTIPLAYER HISTORY*\n" +
   "━━━━━━━━━━━━━━\n\n" +
-  "🪙 Multiplayer Coins: *" + extCoins + "*\n" +
-  "⭐ Multiplayer XP: *" + extXp + "*\n\n";
+  "🪙 Multiplayer Net Coins: *" + extCoins + "*\n" +
+  "⭐ Multiplayer Net XP: *" + extXp + "*\n\n";
 
 if (!history.length) {
   text += "No completed multiplayer matches yet.";
