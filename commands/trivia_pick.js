@@ -33,8 +33,8 @@ User.setProperty("t5_trivia_answer", "", "string");
 
 Bot.runCommand("game_reward " + JSON.stringify({
   result: win ? "win" : "loss",
-  coins: win ? coins : 0,
-  xp: win ? xp : 1
+  coins: win ? coins : (difficulty == "hard" ? -3 : -2),
+  xp: win ? xp : -1
 }));
 
 Bot.sendInlineKeyboard(
@@ -45,5 +45,5 @@ Bot.sendInlineKeyboard(
   "🧠 *TRIVIA RESULT*\n━━━━━━━━━━━━━━\n\n" +
   (win
     ? "✅ *Correct answer*\n+" + coins + " Coins • +" + xp + " XP"
-    : "❌ *Incorrect*\nCorrect answer: *" + answer.toUpperCase() + "*\nNo Coins • +1 XP")
+    : "❌ *Incorrect*\nCorrect answer: *" + answer.toUpperCase() + "*\n" + (difficulty == "hard" ? "-3" : "-2") + " Coins • -1 XP")
 );
