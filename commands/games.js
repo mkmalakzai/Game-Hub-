@@ -29,6 +29,9 @@ Bot.sendInlineKeyboard(
       { title: "⚔️ Arena Duel", command: "challenge" }
     ],
     [
+      { title: "🌐 Multiplayer", command: "multiplayer" }
+    ],
+    [
       { title: "⬅️ Main Menu", command: "main_menu" }
     ]
   ],
@@ -37,6 +40,7 @@ Bot.sendInlineKeyboard(
   "Choose a mode and build your record.\n\n" +
   "⚡ Quick Games — fast rounds, smaller rewards\n" +
   "🧠 Trivia — difficulty-based rewards\n" +
-  "⚔️ Arena Duel — tactical multi-round battle\n\n" +
+  "⚔️ Arena Duel — tactical multi-round battle\n" +
+  "🌐 Multiplayer — real player challenges and group battles\n\n" +
   "Wins improve your streak, XP and leaderboard position."
 );
