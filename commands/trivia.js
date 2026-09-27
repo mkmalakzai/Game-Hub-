@@ -6,19 +6,14 @@
   aliases:
 CMD*/
 
-var qs = [
-  {q:"Which planet is known as the Red Planet?",a:"mars",o:["Mars","Venus","Jupiter"]},
-  {q:"How many days are in a leap year?",a:"366",o:["365","366","364"]},
-  {q:"Which ocean is the largest?",a:"pacific",o:["Atlantic","Pacific","Indian"]},
-  {q:"What is 9 × 7?",a:"63",o:["56","63","72"]}
-];
-var x = qs[Math.floor(Math.random()*qs.length)];
-User.setProperty("t5_trivia_answer", x.a, "string");
-
-var kb=[];
-for (var i=0;i<x.o.length;i++){
-  kb.push([{title:x.o[i],command:"trivia_pick "+x.o[i].toLowerCase()}]);
-}
-kb.push([{title:"⬅️ Games",command:"games"}]);
-
-Bot.sendInlineKeyboard(kb,"🧠 *TRIVIA QUIZ*\n━━━━━━━━━━━━━━\n\n" + x.q);
+Bot.sendInlineKeyboard(
+  [
+    [
+      {title:"🟢 Easy",command:"trivia_play easy"},
+      {title:"🟡 Medium",command:"trivia_play medium"}
+    ],
+    [{title:"🔴 Hard",command:"trivia_play hard"}],
+    [{title:"⬅️ Games",command:"games"}]
+  ],
+  "🧠 *TRIVIA ARENA*\n━━━━━━━━━━━━━━\n\nChoose a difficulty. Harder questions give slightly better rewards.\n\n🟢 Easy  •  +3 Coins / +2 XP\n🟡 Medium • +5 Coins / +3 XP\n🔴 Hard   •  +8 Coins / +5 XP"
+);
