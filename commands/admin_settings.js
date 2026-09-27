@@ -15,11 +15,15 @@ if (String(user.telegramid) !== ownerId) {
 Bot.sendInlineKeyboard(
   [
     [
+      {title:"💰 Economy",command:"admin_economy"},
+      {title:"🎮 Game Control",command:"admin_games"}
+    ],
+    [
       {title:"📢 Force Join",command:"admin_fj"},
-      {title:"🎮 Games",command:"admin_games"}
+      {title:"🧠 Trivia",command:"admin_trivia"}
     ],
     [{title:"🧹 Reset Leaderboard",command:"admin_reset_board"}],
     [{title:"⬅️ Admin Panel",command:"admin_panel"}]
   ],
-  "⚙️ *SETTINGS*\n━━━━━━━━━━━━━━\n\nManage the main GameHub systems."
+  "⚙️ *SYSTEM SETTINGS*\n━━━━━━━━━━━━━━\n\nTune GameHub Pro without editing code."
 );
