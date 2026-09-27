@@ -16,37 +16,15 @@ if (!room || room.status !== "open") {
 
 var uid = String(user.telegramid);
 var name = user.first_name || user.username || uid;
-var exists = false;
 
 for (var i=0; i<room.players.length; i++) {
   if (String(room.players[i].id) === uid) {
-    exists = true;
-    break;
+    return;
   }
 }
 
-if (exists) {
-  Bot.answerCallbackQuery({
-    callback_query_id: request.id,
-    text: "You're already in this battle.",
-    show_alert: false
-  });
-  return;
-}
-
-room.players.push({
-  id: uid,
-  name: name,
-  roll: 0
-});
-
+room.players.push({id:uid,name:name,roll:0});
 Bot.setProperty("t5_group_room_" + roomId, room, "json");
-
-Bot.answerCallbackQuery({
-  callback_query_id: request.id,
-  text: "Joined! Players: " + room.players.length,
-  show_alert: false
-});
 
 Bot.sendMessage(
   "👥 *" + name + "* joined the battle.\nPlayers: *" + room.players.length + "*"
