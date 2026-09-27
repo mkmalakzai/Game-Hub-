@@ -6,14 +6,15 @@
   aliases:
 CMD*/
 
-var ownerId = Bot.getProperty("t5_owner");
+var ownerId = String(Bot.getProperty("t5_owner") || "");
 
-if (!ownerId || String(user.telegramid) != String(ownerId)) {
+if (String(user.telegramid) !== ownerId) {
   Bot.sendMessage("⛔ Access denied.");
   return;
 }
 
 var fj = Bot.getProperty("fj_enabled", "yes");
+var games = Bot.getProperty("t5_games_enabled", "yes");
 
 Bot.sendInlineKeyboard(
   [
@@ -27,7 +28,12 @@ Bot.sendInlineKeyboard(
     ],
     [
       { title: "⚙️ Settings", command: "admin_settings" }
+    ],
+    [
+      { title: "🏠 Main Menu", command: "main_menu" }
     ]
   ],
-  "🛠 *ADMIN PANEL*\n━━━━━━━━━━━━━━\n\nForce Join: *" + (fj == "yes" ? "ON ✅" : "OFF ❌") + "*"
+  "🛠 *ADMIN PANEL*\n━━━━━━━━━━━━━━\n\n" +
+  "📢 Force Join: *" + (fj == "yes" ? "ON ✅" : "OFF ❌") + "*\n" +
+  "🎮 Games: *" + (games == "yes" ? "ON ✅" : "OFF ❌") + "*"
 );
