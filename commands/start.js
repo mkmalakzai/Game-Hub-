@@ -47,6 +47,18 @@ if (Bot.getProperty("t5_migrated_" + uid) != "yes") {
   Bot.setProperty("t5_migrated_" + uid, "yes", "string");
 }
 
+var startParam = String(params || "");
+if (startParam.indexOf("join_") === 0) {
+  var joinMatch = startParam.substr(5);
+  Bot.runCommand("mp_join " + joinMatch);
+  return;
+}
+
+if (startParam === "challenge") {
+  Bot.runCommand("mp_create");
+  return;
+}
+
 var fjEnabled = Bot.getProperty("fj_enabled", "yes");
 
 if (fjEnabled == "yes") {
