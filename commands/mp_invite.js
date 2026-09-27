@@ -8,7 +8,7 @@ CMD*/
 
 var uid = String(user.telegramid);
 var matchId = "I" + Date.now() + "_" + uid.substr(-5);
-var botUsername = String(bot.name || "").replace("@","");
+var botUsername = String(Bot.getProperty("t5_bot_username") || "").replace("@","");
 
 Bot.setProperty("t5_mp_" + matchId, {
   id:matchId,
