@@ -23,6 +23,7 @@ if (uid !== String(match.p2)) {
 match.p2_name = user.first_name || user.username || uid;
 match.status = "active";
 Bot.setProperty("t5_mp_" + matchId, match, "json");
+Bot.setProperty("t5_mp_inbox_" + uid, "", "string");
 Bot.setProperty("t5_last_match_" + uid, matchId, "string");
 
 Bot.sendInlineKeyboard(
@@ -34,5 +35,5 @@ Bot.sendInlineKeyboard(
     [{title:"⚡ Power",command:"mp_move " + matchId + " power"}],
     [{title:"⬅️ Multiplayer",command:"multiplayer"}]
   ],
-  "⚔️ *MATCH STARTED*\n━━━━━━━━━━━━━━\n\nChoose your move."
+  "⚔️ *CHALLENGE ACCEPTED*\n━━━━━━━━━━━━━━\n\nMatch: `" + matchId + "`\n\nChoose your move."
 );
