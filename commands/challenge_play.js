@@ -6,20 +6,18 @@
   aliases:
 CMD*/
 
-var you = Math.floor(Math.random()*100)+1;
-var rival = Math.floor(Math.random()*100)+1;
-var draw = you == rival;
-var win = you > rival;
-
-if (draw) {
-  Libs.ResourcesLib.userRes("coins").add(6);
-  Libs.ResourcesLib.userRes("xp").add(5);
-} else {
-  Bot.runCommand("game_reward " + JSON.stringify({win:win,coins:win?25:4,xp:win?15:4}));
-}
+User.setProperty("t5_duel_player_hp", 3, "integer");
+User.setProperty("t5_duel_ai_hp", 3, "integer");
+User.setProperty("t5_duel_round", 1, "integer");
 
 Bot.sendInlineKeyboard(
-  [[{title:"⚔️ Duel Again",command:"challenge_play"},{title:"⬅️ Games",command:"games"}]],
-  "⚔️ *1v1 CHALLENGE*\n━━━━━━━━━━━━━━\n\nYou: *" + you + "*\nOpponent: *" + rival + "*\n\n" +
-  (draw ? "🤝 Draw! +6 Coins, +5 XP" : (win ? "🏆 Victory! +25 Coins, +15 XP" : "💥 Defeat. +4 Coins, +4 XP"))
+  [
+    [
+      {title:"🗡 Attack",command:"challenge_move attack"},
+      {title:"🛡 Guard",command:"challenge_move guard"}
+    ],
+    [{title:"⚡ Power",command:"challenge_move power"}],
+    [{title:"🏳 Leave Arena",command:"games"}]
+  ],
+  "⚔️ *ARENA DUEL • ROUND 1*\n━━━━━━━━━━━━━━\n\n❤️ You: *3 HP*\n🤖 Opponent: *3 HP*\n\nChoose your move:"
 );
