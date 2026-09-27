@@ -9,9 +9,7 @@ CMD*/
 var roomId = String(params || "");
 var room = Bot.getProperty("t5_group_room_" + roomId);
 
-if (!room || room.status !== "rolling") {
-  return;
-}
+if (!room || room.status !== "rolling") return;
 
 var max = -1;
 var winners = [];
@@ -27,14 +25,12 @@ for (var i=0; i<room.players.length; i++) {
 }
 
 if (winners.length > 1) {
-  for (var t=0; t<room.players.length; t++) {
-    room.players[t].roll = 0;
-  }
+  for (var t=0; t<room.players.length; t++) room.players[t].roll = 0;
   Bot.setProperty("t5_group_room_" + roomId, room, "json");
 
   Bot.sendInlineKeyboard(
     [[{title:"🎲 Tie Break Roll",command:"group_roll " + roomId}]],
-    "🤝 *TIE BREAK*\n━━━━━━━━━━━━━━\n\nTop score: *" + max + "*\nA tie occurred. Roll again."
+    "🤝 *TIE BREAK*\n━━━━━━━━━━━━━━\n\nTop score: *" + max + "*\nAll players roll again."
   );
   return;
 }
@@ -48,37 +44,21 @@ Bot.setProperty("t5_group_room_" + roomId, room, "json");
 Bot.setProperty("t5_group_active_" + room.chat_id, "", "string");
 
 var lines = "";
+
 for (var p=0; p<room.players.length; p++) {
   var pl = room.players[p];
   var isWinner = String(pl.id) === String(winner.id);
-  var coins = isWinner ? 8 : -2;
-  var xp = isWinner ? 5 : -1;
 
-  var coinKey = "t5_ext_coins_" + pl.id;
-  var xpKey = "t5_ext_xp_" + pl.id;
-  var histKey = "t5_mp_history_" + pl.id;
-
-  var c = Number(Bot.getProperty(coinKey) || 0) + coins;
-  var x = Number(Bot.getProperty(xpKey) || 0) + xp;
-  if (c < 0) c = 0;
-  if (x < 0) x = 0;
-
-  Bot.setProperty(coinKey, c, "integer");
-  Bot.setProperty(xpKey, x, "integer");
-
-  var hist = Bot.getProperty(histKey, []);
-  hist.unshift({
-    match: roomId,
-    result: isWinner ? "win" : "loss",
-    opponent: "Group Battle",
-    coins: coins,
-    xp: xp,
-    move: "roll " + pl.roll,
-    opponent_move: "",
-    time: Date.now()
-  });
-  if (hist.length > 20) hist = hist.slice(0,20);
-  Bot.setProperty(histKey, hist, "json");
+  Bot.runCommand("balance_apply " + JSON.stringify({
+    uid:String(pl.id),
+    coins:isWinner ? 8 : -2,
+    xp:isWinner ? 5 : -1,
+    wins:isWinner ? 1 : 0,
+    losses:isWinner ? 0 : 1,
+    result:isWinner ? "win" : "loss",
+    reason:"Group Battle",
+    opponent:"Group"
+  }));
 
   lines += (isWinner ? "🏆 " : "• ") + pl.name + " — *" + pl.roll + "*\n";
 }
