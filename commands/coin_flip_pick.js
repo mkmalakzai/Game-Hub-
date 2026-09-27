@@ -6,14 +6,36 @@
   aliases:
 CMD*/
 
+var now = Date.now();
+var last = Number(User.getProperty("t5_cd_coin") || 0);
+if (now - last < 2500) {
+  Bot.sendMessage("⏳ Wait a moment before flipping again.");
+  return;
+}
+User.setProperty("t5_cd_coin", now, "integer");
+
 var pick = String(params || "").toLowerCase();
+if (pick != "heads" && pick != "tails") {
+  Bot.runCommand("coin_flip");
+  return;
+}
+
 var result = Math.random() < 0.5 ? "heads" : "tails";
 var win = pick == result;
 
-Bot.runCommand("game_reward " + JSON.stringify({win:win,coins:win?12:2,xp:win?8:2}));
+Bot.runCommand("game_reward " + JSON.stringify({
+  result: win ? "win" : "loss",
+  coins: win ? 4 : 0,
+  xp: win ? 2 : 1
+}));
 
 Bot.sendInlineKeyboard(
-  [[{title:"🪙 Play Again",command:"coin_flip"},{title:"⬅️ Games",command:"games"}]],
-  "🪙 *COIN FLIP*\n━━━━━━━━━━━━━━\n\nResult: *" + result.toUpperCase() + "*\n\n" +
-  (win ? "🏆 Correct! +12 Coins, +8 XP" : "❌ Wrong guess. +2 Coins, +2 XP")
+  [
+    [{title:"🪙 Flip Again",command:"coin_flip"}],
+    [{title:"⬅️ Games",command:"games"}]
+  ],
+  "🪙 *COIN FLIP*\n━━━━━━━━━━━━━━\n\n" +
+  "Your call: *" + pick.toUpperCase() + "*\n" +
+  "Result: *" + result.toUpperCase() + "*\n\n" +
+  (win ? "✅ *Correct*\n+4 Coins • +2 XP" : "❌ *Missed*\nNo Coins • +1 XP")
 );
