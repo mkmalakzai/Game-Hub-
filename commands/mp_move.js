@@ -18,7 +18,6 @@ if (!match || match.status !== "active") {
 }
 
 var uid = String(user.telegramid);
-
 if (uid !== String(match.p1) && uid !== String(match.p2)) {
   Bot.sendMessage("⛔ This match isn't yours.");
   return;
@@ -47,7 +46,10 @@ if (uid === String(match.p1)) {
 Bot.setProperty("t5_mp_" + matchId, match, "json");
 
 if (!match.p1_move || !match.p2_move) {
-  Bot.sendMessage("✅ Move locked. Waiting for your opponent...");
+  Bot.sendInlineKeyboard(
+    [[{title:"📋 Match Details",command:"mp_show " + matchId}]],
+    "✅ *MOVE LOCKED*\n━━━━━━━━━━━━━━\n\nWaiting for your opponent."
+  );
   return;
 }
 
