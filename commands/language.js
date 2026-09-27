@@ -22,7 +22,11 @@ Bot.sendInlineKeyboard(
       {title:"🇹🇷 Türkçe",command:"language_set tr"},
       {title:"🇮🇩 Indonesia",command:"language_set id"}
     ],
+    [
+      {title:"🇮🇳 हिन्दी",command:"language_set hi"},
+      {title:"🇧🇩 বাংলা",command:"language_set bn"}
+    ],
     [{title:"⬅️ Main Menu",command:"main_menu"}]
   ],
-  "🌐 *LANGUAGE*\n━━━━━━━━━━━━━━\n\nCurrent: *" + lang.toUpperCase() + "*\n\nChoose your preferred language."
+  "🌐 *LANGUAGE*\n━━━━━━━━━━━━━━\n\nCurrent: *" + lang.toUpperCase() + "*\n\nChoose your preferred interface language."
 );
