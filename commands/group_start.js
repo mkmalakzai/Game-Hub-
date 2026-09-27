@@ -15,20 +15,12 @@ if (!room || room.status !== "open") {
 }
 
 if (String(user.telegramid) !== String(room.host)) {
-  Bot.answerCallbackQuery({
-    callback_query_id: request.id,
-    text: "Only the host can start this battle.",
-    show_alert: true
-  });
+  Bot.sendMessage("⛔ Only the host can start this battle.");
   return;
 }
 
 if (room.players.length < 2) {
-  Bot.answerCallbackQuery({
-    callback_query_id: request.id,
-    text: "At least 2 players are required.",
-    show_alert: true
-  });
+  Bot.sendMessage("⚠️ At least 2 players are required.");
   return;
 }
 
@@ -39,6 +31,6 @@ Bot.sendInlineKeyboard(
   [[{title:"🎲 Roll Now",command:"group_roll " + roomId}]],
   "🎲 *GROUP BATTLE STARTED*\n━━━━━━━━━━━━━━\n\n" +
   "Players: *" + room.players.length + "*\n\n" +
-  "Every player must tap *Roll Now*.\n" +
-  "Highest roll wins. Ties are replayed."
+  "Every joined player must tap *Roll Now*.\n" +
+  "Highest roll wins. One roll per player."
 );
