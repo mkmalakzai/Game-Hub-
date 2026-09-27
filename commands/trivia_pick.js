@@ -7,14 +7,43 @@
 CMD*/
 
 var answer = String(User.getProperty("t5_trivia_answer") || "");
+var difficulty = String(User.getProperty("t5_trivia_difficulty") || "easy");
 var pick = String(params || "").toLowerCase();
-var win = answer && pick == answer;
+
+if (!answer) {
+  Bot.runCommand("trivia");
+  return;
+}
+
+var win = pick == answer;
+
+var coins = 3;
+var xp = 2;
+
+if (difficulty == "medium") {
+  coins = 5;
+  xp = 3;
+}
+if (difficulty == "hard") {
+  coins = 8;
+  xp = 5;
+}
 
 User.setProperty("t5_trivia_answer", "", "string");
-Bot.runCommand("game_reward " + JSON.stringify({win:win,coins:win?18:2,xp:win?10:2}));
+
+Bot.runCommand("game_reward " + JSON.stringify({
+  result: win ? "win" : "loss",
+  coins: win ? coins : 0,
+  xp: win ? xp : 1
+}));
 
 Bot.sendInlineKeyboard(
-  [[{title:"🧠 Next Question",command:"trivia"},{title:"⬅️ Games",command:"games"}]],
+  [
+    [{title:"🧠 Next Question",command:"trivia_play " + difficulty}],
+    [{title:"⬅️ Trivia Menu",command:"trivia"}]
+  ],
   "🧠 *TRIVIA RESULT*\n━━━━━━━━━━━━━━\n\n" +
-  (win ? "✅ Correct! +18 Coins, +10 XP" : "❌ Wrong answer. Correct: *" + answer.toUpperCase() + "*\n+2 Coins, +2 XP")
+  (win
+    ? "✅ *Correct answer*\n+" + coins + " Coins • +" + xp + " XP"
+    : "❌ *Incorrect*\nCorrect answer: *" + answer.toUpperCase() + "*\nNo Coins • +1 XP")
 );
