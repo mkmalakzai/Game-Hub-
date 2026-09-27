@@ -15,25 +15,30 @@ if (!room || room.status !== "open") {
 }
 
 if (String(user.telegramid) !== String(room.host)) {
-  Bot.sendMessage("⛔ Only the host can start the battle.");
+  Bot.answerCallbackQuery({
+    callback_query_id: request.id,
+    text: "Only the host can start this battle.",
+    show_alert: true
+  });
   return;
 }
 
 if (room.players.length < 2) {
-  Bot.sendMessage("⚠️ At least 2 players are required.");
+  Bot.answerCallbackQuery({
+    callback_query_id: request.id,
+    text: "At least 2 players are required.",
+    show_alert: true
+  });
   return;
 }
 
-room.status = "finished";
-var winner = room.players[Math.floor(Math.random()*room.players.length)];
-room.winner = winner.id;
-
+room.status = "rolling";
 Bot.setProperty("t5_group_room_" + roomId, room, "json");
 
-Bot.sendMessage(
-  "👥 *GROUP BATTLE RESULT*\n━━━━━━━━━━━━━━\n\nPlayers: *" + room.players.length + "*\n🏆 Winner: *" + winner.name + "*\n\nWinner earns +8 Coins and +5 XP."
+Bot.sendInlineKeyboard(
+  [[{title:"🎲 Roll Now",command:"group_roll " + roomId}]],
+  "🎲 *GROUP BATTLE STARTED*\n━━━━━━━━━━━━━━\n\n" +
+  "Players: *" + room.players.length + "*\n\n" +
+  "Every player must tap *Roll Now*.\n" +
+  "Highest roll wins. Ties are replayed."
 );
-
-if (String(user.telegramid) === String(winner.id)) {
-  Bot.runCommand("score_change " + JSON.stringify({coins:8,xp:5,reason:"Group Battle Win"}));
-}
