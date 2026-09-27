@@ -1,9 +1,10 @@
-/*
+/*CMD
   command: games
   help:
   need_reply: false
   folder: GAMES
-*/
+  aliases:
+CMD*/
 
 Bot.sendInlineKeyboard(
   [
