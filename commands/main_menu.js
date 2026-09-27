@@ -26,8 +26,9 @@ Bot.sendInlineKeyboard(
       { title: "🎁 Daily Reward", command: "daily_reward" }
     ],
     [
+      { title: "🌐 Language", command: "language" },
       { title: "ℹ️ Help", command: "help" }
     ]
   ],
-  "🎮 *GAMEHUB PRO*\n━━━━━━━━━━━━━━\n\nWelcome, *" + firstName + "*!\n\nPlay games, earn coins, gain XP and climb the leaderboard.\n\nChoose an option below:"
+  "🎮 *GAMEHUB PRO*\n━━━━━━━━━━━━━━\n\nWelcome, *" + firstName + "*!\n\nPlay games, compete with real players, earn coins, gain XP and climb the leaderboard.\n\nChoose an option below:"
 );
