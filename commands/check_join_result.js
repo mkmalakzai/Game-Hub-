@@ -1,9 +1,10 @@
-/*
+/*CMD
   command: check_join_result
   help:
   need_reply: false
   folder: FORCE_JOIN
-*/
+  aliases:
+CMD*/
 
 var res = options;
 
