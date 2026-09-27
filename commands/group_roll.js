@@ -25,20 +25,11 @@ for (var i=0; i<room.players.length; i++) {
 }
 
 if (found < 0) {
-  Bot.answerCallbackQuery({
-    callback_query_id: request.id,
-    text: "You are not in this battle.",
-    show_alert: true
-  });
+  Bot.sendMessage("⛔ You are not in this battle.");
   return;
 }
 
 if (Number(room.players[found].roll || 0) > 0) {
-  Bot.answerCallbackQuery({
-    callback_query_id: request.id,
-    text: "You already rolled.",
-    show_alert: false
-  });
   return;
 }
 
@@ -46,11 +37,7 @@ var roll = Math.floor(Math.random()*100)+1;
 room.players[found].roll = roll;
 Bot.setProperty("t5_group_room_" + roomId, room, "json");
 
-Bot.answerCallbackQuery({
-  callback_query_id: request.id,
-  text: "Your roll: " + roll,
-  show_alert: true
-});
+Bot.sendMessage("🎲 *" + room.players[found].name + "* rolled *" + roll + "*");
 
 var allDone = true;
 for (var j=0; j<room.players.length; j++) {
