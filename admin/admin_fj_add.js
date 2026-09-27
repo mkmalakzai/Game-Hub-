@@ -1,9 +1,10 @@
-/*
+/*CMD
   command: admin_fj_add
   help:
   need_reply: false
   folder: ADMIN
-*/
+  aliases:
+CMD*/
 
 var ownerId = Bot.getProperty("owner_id");
 
