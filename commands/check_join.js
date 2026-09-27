@@ -1,9 +1,10 @@
-/*
+/*CMD
   command: check_join
   help:
   need_reply: false
   folder: FORCE_JOIN
-*/
+  aliases:
+CMD*/
 
 var channels = Bot.getProperty("fj_channels", []);
 
