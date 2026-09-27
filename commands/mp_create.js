@@ -7,7 +7,7 @@
 CMD*/
 
 var type = chat && chat.chat_type ? String(chat.chat_type) : "";
-var botUsername = String(bot.name || "").replace("@","");
+var botUsername = String(Bot.getProperty("t5_bot_username") || "").replace("@","");
 
 if (type == "group" || type == "supergroup") {
   Bot.sendInlineKeyboard(
