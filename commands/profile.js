@@ -6,8 +6,12 @@
   aliases:
 CMD*/
 
-var coins = Math.floor(Libs.ResourcesLib.userRes("coins").value());
-var xp = Math.floor(Libs.ResourcesLib.userRes("xp").value());
+var baseCoins = Math.floor(Libs.ResourcesLib.userRes("coins").value());
+var baseXp = Math.floor(Libs.ResourcesLib.userRes("xp").value());
+var mpCoins = Number(Bot.getProperty("t5_ext_coins_" + user.telegramid) || 0);
+var mpXp = Number(Bot.getProperty("t5_ext_xp_" + user.telegramid) || 0);
+var coins = baseCoins + mpCoins;
+var xp = baseXp + mpXp;
 var wins = Math.floor(Libs.ResourcesLib.userRes("wins").value());
 var losses = Math.floor(Libs.ResourcesLib.userRes("losses").value());
 
