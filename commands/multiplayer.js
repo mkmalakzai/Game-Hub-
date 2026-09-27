@@ -18,13 +18,17 @@ Bot.sendInlineKeyboard(
   [
     [
       {title:"⚔️ Challenge Player",command:"mp_create"},
+      {title:"📥 Pending Challenge",command:"mp_inbox"}
+    ],
+    [
+      {title:"🔑 Enter Match ID",command:"mp_enter"},
       {title:"🎲 Quick Match",command:"mp_quick"}
     ],
     [
       {title:"👥 Group Battle",command:"group_game"},
-      {title:"📜 My Matches",command:"mp_history"}
+      {title:"📜 Match History",command:"mp_history"}
     ],
     [{title:"⬅️ Games",command:"games"}]
   ],
-  "🌐 *MULTIPLAYER HUB*\n━━━━━━━━━━━━━━\n\nChallenge real players, enter matchmaking, or start a group battle."
+  "🌐 *MULTIPLAYER HUB*\n━━━━━━━━━━━━━━\n\nReal player challenges, matchmaking, and group battles."
 );
